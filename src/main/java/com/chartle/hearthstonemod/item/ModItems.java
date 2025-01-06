@@ -18,7 +18,7 @@ public class ModItems {
             () -> new HearthstoneItem(
                     new Item.Properties()
                             .stacksTo(1)
-                            .durability(100)
+                            .durability(50)
                             .useItemDescriptionPrefix()
                             .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.parse("hearthstonemod:hearthstone")))
             )
