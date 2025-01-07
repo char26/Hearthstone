@@ -20,6 +20,7 @@ public class ModItems {
                             .stacksTo(1)
                             .durability(50)
                             .useItemDescriptionPrefix()
+                            .component(ModDataComponents.HEARTHSTONE_PROPERTIES.get(), HearthstoneItem.HearthstoneProperties.DEFAULT)
                             .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.parse("hearthstonemod:hearthstone")))
             )
     );
