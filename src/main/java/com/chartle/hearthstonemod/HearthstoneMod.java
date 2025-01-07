@@ -1,5 +1,6 @@
 package com.chartle.hearthstonemod;
 
+import com.chartle.hearthstonemod.item.ModDataComponents;
 import com.chartle.hearthstonemod.item.ModItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -37,6 +38,7 @@ public class HearthstoneMod {
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        ModDataComponents.initialise(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
