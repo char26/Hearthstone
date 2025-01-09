@@ -8,6 +8,7 @@ import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -24,7 +25,18 @@ public class HearthstoneItem extends Item {
     public HearthstoneItem(Properties pProperties) {
         super(pProperties);
     }
-    
+
+    private static int dimensionAsInt(ResourceKey<Level> dimension) {
+        if (dimension == Level.OVERWORLD) {
+            return 0;
+        } else if (dimension == Level.NETHER) {
+            return 1;
+        } else if (dimension == Level.END) {
+            return 2;
+        } else {
+            return -1;
+        }
+    }
 
     @Nullable
     private static HearthstoneProperties getProperties(final ItemStack stack) {
@@ -40,8 +52,8 @@ public class HearthstoneItem extends Item {
 
     private static void updateSavedPosition(final ItemStack itemStack,
                                             final double x, final double y, final double z,
-                                            final boolean isNether) {
-        HearthstoneProperties newProperties = new HearthstoneProperties(x, y, z, isNether);
+                                            final int dimension) {
+        HearthstoneProperties newProperties = new HearthstoneProperties(x, y, z, dimension);
         setProperties(itemStack, newProperties);
     }
 
@@ -57,7 +69,7 @@ public class HearthstoneItem extends Item {
                         pPlayer.getX(),
                         pPlayer.getY(),
                         pPlayer.getZ(),
-                        serverLevel.dimension() == Level.NETHER);
+                        dimensionAsInt(serverLevel.dimension()));
 
                 pPlayer.displayClientMessage(Component.literal("Hearthstone location saved."), false);
                 return InteractionResult.SUCCESS;
@@ -67,7 +79,7 @@ public class HearthstoneItem extends Item {
                     return InteractionResult.PASS;
                 }
                 // TODO: allow teleporting to/from nether
-                if ((serverLevel.dimension() == Level.NETHER) != properties.isNether) {
+                if (dimensionAsInt(serverLevel.dimension()) != properties.dimension) {
                     pPlayer.displayClientMessage(Component.literal("Cannot teleport to another dimension. (Coming soon)"), false);
                     return InteractionResult.PASS;
                 }
@@ -84,7 +96,7 @@ public class HearthstoneItem extends Item {
         super.appendHoverText(pStack, pContext, pTooltipComponents, pTooltipFlag);
     }
 
-    public record HearthstoneProperties(double x, double y, double z, boolean isNether) {
+    public record HearthstoneProperties(double x, double y, double z, int dimension) {
         public static final Codec<HearthstoneProperties> CODEC = RecordCodecBuilder.create(builder ->
                 builder.group(
                         Codec.DOUBLE
@@ -97,9 +109,9 @@ public class HearthstoneItem extends Item {
                                 .fieldOf("z")
                                 .forGetter(HearthstoneProperties::z),
 
-                        Codec.BOOL
-                                .fieldOf("is_nether")
-                                .forGetter(HearthstoneProperties::isNether)
+                        Codec.INT
+                                .fieldOf("dimension")
+                                .forGetter(HearthstoneProperties::dimension)
 
                 ).apply(builder, HearthstoneProperties::new)
         );
@@ -111,8 +123,8 @@ public class HearthstoneItem extends Item {
                 HearthstoneProperties::y,
                 ByteBufCodecs.DOUBLE,
                 HearthstoneProperties::z,
-                ByteBufCodecs.BOOL,
-                HearthstoneProperties::isNether,
+                ByteBufCodecs.INT,
+                HearthstoneProperties::dimension,
                 HearthstoneProperties::new
         );
 
