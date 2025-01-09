@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dyed_hearthstone",
+  "ingredients": [
+    "hearthstonemod:hearthstone",
+    "minecraft:magenta_dye"
+  ],
+  "result": {
+    "count": 1,
+    "id": "hearthstonemod:purple_hearthstone"
+  }
+}

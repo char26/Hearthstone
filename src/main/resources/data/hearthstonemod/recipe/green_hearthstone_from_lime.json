@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dyed_hearthstone",
+  "ingredients": [
+    "hearthstonemod:hearthstone",
+    "minecraft:lime_dye"
+  ],
+  "result": {
+    "count": 1,
+    "id": "hearthstonemod:green_hearthstone"
+  }
+}

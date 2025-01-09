@@ -38,7 +38,7 @@ public class HearthstoneMod {
 
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
-        ModDataComponents.initialise(modEventBus);
+        ModDataComponents.initialize(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -49,6 +49,13 @@ public class HearthstoneMod {
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if(event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             event.accept(ModItems.HEARTHSTONE);
+            event.accept(ModItems.PINK_HEARTHSTONE);
+            event.accept(ModItems.GREEN_HEARTHSTONE);
+            event.accept(ModItems.RED_HEARTHSTONE);
+            event.accept(ModItems.YELLOW_HEARTHSTONE);
+            event.accept(ModItems.ORANGE_HEARTHSTONE);
+            event.accept(ModItems.PURPLE_HEARTHSTONE);
+
         }
     }
 

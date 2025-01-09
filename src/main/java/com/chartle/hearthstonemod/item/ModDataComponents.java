@@ -20,7 +20,7 @@ public class ModDataComponents
     private static final DeferredRegister<DataComponentType<?>> DATA_COMPONENT_TYPES =
             DeferredRegister.create(Registries.DATA_COMPONENT_TYPE, HearthstoneMod.MOD_ID);
 
-    private static boolean isInitialised = false;
+    private static boolean isInitialized = false;
 
     public static final RegistryObject<DataComponentType<HearthstoneItem.HearthstoneProperties>> HEARTHSTONE_PROPERTIES = register("hearthstone_properties",
             builder -> builder
@@ -36,14 +36,14 @@ public class ModDataComponents
      *
      * @param modEventBus The mod event bus
      */
-    public static void initialise(final IEventBus modEventBus) {
-        if (isInitialised) {
-            throw new IllegalStateException("Already initialised");
+    public static void initialize(final IEventBus modEventBus) {
+        if (isInitialized) {
+            throw new IllegalStateException("Already initialized");
         }
 
         DATA_COMPONENT_TYPES.register(modEventBus);
 
-        isInitialised = true;
+        isInitialized = true;
     }
 
     private static <T> RegistryObject<DataComponentType<T>> register(final String name, final UnaryOperator<DataComponentType.Builder<T>> builder) {

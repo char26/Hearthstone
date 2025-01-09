@@ -1,3 +1,9 @@
 {
-  "item.hearthstonemod.hearthstone": "Hearthstone"
+  "item.hearthstonemod.hearthstone": "Hearthstone",
+  "item.hearthstonemod.green_hearthstone": "Green Hearthstone",
+  "item.hearthstonemod.purple_hearthstone": "Purple Hearthstone",
+  "item.hearthstonemod.pink_hearthstone": "Pink Hearthstone",
+  "item.hearthstonemod.red_hearthstone": "Red Hearthstone",
+  "item.hearthstonemod.yellow_hearthstone": "Yellow Hearthstone",
+  "item.hearthstonemod.orange_hearthstone": "Orange Hearthstone"
 }

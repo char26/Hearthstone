@@ -1,6 +1,7 @@
 package com.chartle.hearthstonemod.item.custom;
 
 import com.chartle.hearthstonemod.item.ModDataComponents;
+import com.chartle.hearthstonemod.item.ModItems;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -11,9 +12,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
@@ -25,6 +24,7 @@ public class HearthstoneItem extends Item {
     public HearthstoneItem(Properties pProperties) {
         super(pProperties);
     }
+    
 
     @Nullable
     private static HearthstoneProperties getProperties(final ItemStack stack) {

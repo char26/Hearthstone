@@ -1,0 +1,32 @@
+name: "Publish release to CurseForge"
+
+on:
+  push:
+    branches: [main]
+    # Only publish when version has been updated
+    paths:
+      - "gradle.properties"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - { uses: actions/checkout@v2, with: { fetch-depth: 0 } }
+      - {
+          name: "Set up JDK 21",
+          uses: actions/setup-java@v2,
+          with: { distribution: "adopt", java-version: "21" },
+        }
+      - {
+          name: "Build with Gradle",
+          id: build,
+          run: "chmod +x gradlew && ./gradlew build publish",
+        }
+      - name: "Upload to CurseForge"
+        uses: itsmeow/curseforge-upload@v3
+        with:
+          release_type: "beta"
+          file_path: "build/libs/hearthstonemod-${{ steps.build.outputs.version }}.jar"
+          game_endpoint: "minecraft"
+          game_versions: "Minecraft 1.21.4,Java 21"
+          project_id: "1172103"
+          token: "${{ secrets.CF_API_TOKEN }}"
