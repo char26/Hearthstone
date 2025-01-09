@@ -1,6 +1,6 @@
 <h1 align="center">Hearthstone</h1>
 <p align="center">
-  <img src="https://drive.google.com/thumbnail?id=10E23pwBN6tAaWQJUOJnmZS8SO8XEIz7x" alt="Hearthstone">
+  <img src="images\hearthstone_high_res.png" alt="Hearthstone">
 </p>
 <p align="center">
   Currently up to date for: <strong>1.21.4</strong>
@@ -15,8 +15,41 @@
 </ul>
 <h2 align="center">CRAFTING</h2>
 <p align="center">
-  <img src="https://drive.google.com/thumbnail?id=1vKh_9O8MxgPfpTPeZPuHYn7eLiF71cDA" alt="Crafting recipe for Hearthstone">
+  <img src="images\hearthstone_crafting.png" alt="Crafting recipe for Hearthstone">
 </p>
 <p align="center">
   Craft with 2x Cobblestone or 2x Stone in a vertical formation.
 </p>
+
+<h2 align="center">COLORS</h2>
+<p align="center">
+  <img src="images\hearthstone_dying.png" alt="Pink dye recipe for Hearthstone">
+</p>
+<table align="center">
+<th>Dyes</th>
+<th>Color</th>
+<tr>
+    <td>Green, Lime</td>
+    <td>Green</td>
+  </tr>
+  <tr>
+    <td>Red</td>
+    <td>Red</td>
+  </tr>
+  <tr>
+    <td>Yellow</td>
+    <td>Yellow</td>
+  </tr>
+  <tr>
+    <td>Orange</td>
+    <td>Orange</td>
+  </tr>
+  <tr>
+    <td>Pink</td>
+    <td>Pink</td>
+  </tr>
+  <tr>
+    <td>Purple, Magenta</td>
+    <td>Purple</td>
+  </tr>
+</table>
